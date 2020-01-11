@@ -25,8 +25,9 @@ class Main extends React.Component {
       this.setState({dataFromServer: message})
       console.log(message)
 
-      if (message.message === "game start") {
+      if (message.message === "game start" || message.message === "draw card") {
         this.setState({message: message.card})
+        console.log(message.card)
       } else {
         this.setState({message: message.message})
       }
