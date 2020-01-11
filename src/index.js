@@ -8,6 +8,7 @@ class Main extends React.Component {
     this.state = {
       ws: null,
       message: '',
+      id: '',
       sendButton: null,
     };
   }
@@ -28,6 +29,9 @@ class Main extends React.Component {
       if (message.message === "game start" || message.message === "draw card") {
         this.setState({message: message.card})
         console.log(message.card)
+      } else if (message.message === "successful connect") {
+        this.setState({id: message.id})
+        this.setState({message: message.message})
       } else {
         this.setState({message: message.message})
       }
@@ -41,6 +45,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+      <div>Your ID :{this.state.id}</div>
       {this.state.message}
       <button onClick={this.sendStr.bind(this)}></button>
       </div>
