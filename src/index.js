@@ -7,6 +7,7 @@ class Main extends React.Component {
 
     this.state = {
       ws: null,
+      card: [],
       message: '',
       id: '',
       sendButton: null,
@@ -27,8 +28,8 @@ class Main extends React.Component {
       console.log(message)
 
       if (message.message === "game start" || message.message === "draw card") {
-        this.setState({message: message.card})
-        console.log(message.card)
+        this.setState({card: message.card})
+        this.setState({message: message.message})
       } else if (message.message === "successful connect") {
         this.setState({id: message.id})
         this.setState({message: message.message})
@@ -45,9 +46,14 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-      <div>Your ID :{this.state.id}</div>
-      {this.state.message}
-      <button onClick={this.sendStr.bind(this)}></button>
+        <div>Your ID :{this.state.id}</div>
+        <div>{this.state.message}</div>
+        <div><button onClick={this.sendStr.bind(this)}>Draw</button></div>
+        <div>
+          {this.state.card.map((card) => (
+            <li>{card}</li>
+          ))}
+        </div>
       </div>
     );
   }
