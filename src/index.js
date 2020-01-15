@@ -32,7 +32,12 @@ class Main extends React.Component {
       console.log(message)
 
       if (message.message === "game start" || message.message === "draw card") {
-        this.setState({card: message.card})
+        var card = []
+        for (var j = 0; j < message.card.length; ++j) {
+          card.push("./img/" + message.card[j] + ".png")
+          //card.push(message.card[j])
+        }
+        this.setState({card: card})
         this.setState({message: message.message})
         this.setState({dispButton: true})
       }
@@ -78,7 +83,7 @@ class Main extends React.Component {
         )}
         <div>
           {this.state.card.map((card) => (
-            <li>{card}</li>
+            <img src={card} height = "8%" width = "8%" alt={card} />
           ))}
         </div>
         {this.state.dispRanking && (
