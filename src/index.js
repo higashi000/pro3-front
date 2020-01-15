@@ -11,6 +11,7 @@ class Main extends React.Component {
       rank: '',
       rankStr: '',
       ranking: [],
+      drawCard: './img/card_back.png',
       message: '',
       id: '',
       dispButton: false,
@@ -31,13 +32,19 @@ class Main extends React.Component {
       this.setState({dataFromServer: message})
       console.log(message)
 
-      if (message.message === "game start" || message.message === "draw card") {
+      if (message.message === "game start" || message.message === "draw card" || message.message === "drawn card") {
         var card = []
         for (var j = 0; j < message.card.length; ++j) {
           card.push("./img/" + message.card[j] + ".png")
-          //card.push(message.card[j])
         }
         this.setState({card: card})
+        var drawCard = ""
+        if (message.draw_card == undefined) {
+          drawCard = "card_back"
+        } else {
+          drawCard = message.draw_card
+        }
+        this.setState({drawCard: ("./img/" + drawCard + ".png")})
         this.setState({message: message.message})
         this.setState({dispButton: true})
       }
@@ -83,8 +90,10 @@ class Main extends React.Component {
         )}
         <div>
           {this.state.card.map((card) => (
-            <img src={card} height = "8%" width = "8%" alt={card} />
+            <img src={card} height = "8%" width = "8%" alt = {card} />
           ))}
+          <p>Draw Card</p>
+          <img src={this.state.drawCard} height = "9%" width = "9%" alt = {this.state.drawCard} />
         </div>
         {this.state.dispRanking && (
         <div>
