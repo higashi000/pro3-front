@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Button from '@material-ui/core/Button'
+import './index.css'
 
 class Main extends React.Component {
   constructor(props) {
@@ -86,22 +88,28 @@ class Main extends React.Component {
         <div>Your ID :{this.state.id}</div>
         <div>{this.state.message}</div>
         {this.state.dispButton && (
-          <div><button onClick={this.sendStr.bind(this)}>Draw</button></div>
+          <div>
+					<Button variant = "contained" color = "primary" onClick = {this.sendStr.bind(this)}>
+						Draw
+					</Button>
+					</div>
         )}
         <div>
           {this.state.card.map((card) => (
             <img src={card} height = "8%" width = "8%" alt = {card} />
           ))}
+        </div>
+        <div>
           <p>Draw Card</p>
           <img src={this.state.drawCard} height = "9%" width = "9%" alt = {this.state.drawCard} />
         </div>
         {this.state.dispRanking && (
-        <div>
-          <li>1st: {this.state.ranking[0]}</li>
-          <li>2nd: {this.state.ranking[1]}</li>
-          <li>3rd: {this.state.ranking[2]}</li>
-          <li>4th: {this.state.ranking[3]}</li>
-        </div>
+          <div>
+            <li>1st: {this.state.ranking[0]}</li>
+            <li>2nd: {this.state.ranking[1]}</li>
+            <li>3rd: {this.state.ranking[2]}</li>
+            <li>4th: {this.state.ranking[3]}</li>
+          </div>
         )}
       </div>
     );
