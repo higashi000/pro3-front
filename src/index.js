@@ -1,6 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 import './index.css'
 
 class Main extends React.Component {
@@ -85,14 +89,19 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+      <AppBar>
+        <Toolbar>
+          <Typography variant = "h6">ババ抜き</Typography>
+        </Toolbar>
+      </AppBar>
         <div>Your ID :{this.state.id}</div>
         <div>{this.state.message}</div>
         {this.state.dispButton && (
           <div>
-					<Button variant = "contained" color = "primary" onClick = {this.sendStr.bind(this)}>
-						Draw
-					</Button>
-					</div>
+            <Button variant = "contained" color = "primary" onClick = {this.sendStr.bind(this)}>
+            Draw
+            </Button>
+          </div>
         )}
         <div>
           {this.state.card.map((card) => (
