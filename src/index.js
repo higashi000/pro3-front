@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Box from '@material-ui/core/Box';
+// import Typography from '@material-ui/core/Typography';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import Box from '@material-ui/core/Box';
 import './index.css'
 
 class Main extends React.Component {
@@ -45,7 +45,7 @@ class Main extends React.Component {
         }
         this.setState({card: card})
         var drawCard = ""
-        if (message.draw_card == undefined) {
+        if (message.draw_card === undefined) {
           drawCard = "card_back"
         } else {
           drawCard = message.draw_card
@@ -89,13 +89,21 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-      <AppBar>
-        <Toolbar>
-          <Typography variant = "h6">ババ抜き</Typography>
-        </Toolbar>
-      </AppBar>
-        <div>Your ID :{this.state.id}</div>
-        <div>{this.state.message}</div>
+        {/* ↓タイトル↓ */}
+        <div className = "PageTitle">
+          <center>
+            <h1>ババ抜き</h1>
+          </center>
+        </div>
+        {/* ↑タイトル↑ */}
+
+        <center>
+          <div><h3>Your ID :{this.state.id}</h3></div>
+          <div><h3>Server Say: {this.state.message}</h3></div>
+        </center>
+
+        {/* ↓ボタン↓ */}
+        <center>
         {this.state.dispButton && (
           <div>
             <Button variant = "contained" color = "primary" onClick = {this.sendStr.bind(this)}>
@@ -103,15 +111,29 @@ class Main extends React.Component {
             </Button>
           </div>
         )}
-        <div>
+        </center>
+        {/* ↑ボタン↑ */}
+
+        {/* ↓カードの表示↓ */}
+        <center>
+        <div className = "CardFrame">
+          <h3>Your Hand:</h3>
           {this.state.card.map((card) => (
             <img src={card} height = "8%" width = "8%" alt = {card} />
           ))}
         </div>
-        <div>
-          <p>Draw Card</p>
-          <img src={this.state.drawCard} height = "9%" width = "9%" alt = {this.state.drawCard} />
-        </div>
+        </center>
+        {/* ↑カードの表示↑ */}
+
+        <p className = "WhiteSpace"></p>
+
+        <center>
+          <div className = "CardFrame">
+            <h3>Draw Card</h3>
+            <img src={this.state.drawCard} height = "30%" width = "30%" alt = {this.state.drawCard} />
+          </div>
+        </center>
+
         {this.state.dispRanking && (
           <div>
             <li>1st: {this.state.ranking[0]}</li>
