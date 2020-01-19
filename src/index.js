@@ -130,7 +130,7 @@ class Main extends React.Component {
         <center>
           <div className = "CardFrame">
             <h3>Draw Card</h3>
-            <img src={this.state.drawCard} height = "30%" width = "30%" alt = {this.state.drawCard} />
+            <img src={this.state.drawCard} height = "8%" width = "8%" alt = {this.state.drawCard} />
           </div>
         </center>
 
