@@ -116,12 +116,12 @@ class Main extends React.Component {
 
         {/* ↓カードの表示↓ */}
         <center>
-        <div className = "CardFrame">
-          <h3>Your Hand:</h3>
-          {this.state.card.map((card) => (
-            <img src={card} height = "8%" width = "8%" alt = {card} />
-          ))}
-        </div>
+        {this.state.card.map((card) => (
+          <div className = "CardFrame">
+            <h3>Your Hand:</h3>
+              <img src={card} height = "8%" width = "8%" alt = {card} />
+          </div>
+        ))}
         </center>
         {/* ↑カードの表示↑ */}
 
