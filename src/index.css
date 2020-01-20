@@ -1,11 +1,11 @@
 .CardFrame {
   border-radius: 4px;
-  border: solid 5px #00ffff;
+  border: solid 5px Green;
 }
 
 .PageTitle {
   color: #333333;
-  background-color: #99ffff;
+  background-color: Green;
 }
 
 .WhiteSpace {
